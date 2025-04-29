@@ -10,6 +10,7 @@ resources:
 
 helmCharts:
   - name: p1as-cluster-tools
+    releaseName: v2.2-release-branch-latest
     additionalValuesFiles:
       - ../../values-files/base/values.yaml   # base values.yaml
       - ../../values-files/${REGION_NICK_NAME}/values.yaml   # regional values.yaml
