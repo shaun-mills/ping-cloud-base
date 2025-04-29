@@ -2,11 +2,13 @@
 
 ### 2.2.0
 
+- OSD: Enable Save Query and CSV Export of Logs
 - Enable fluentbit storage layer metrics by updating prometheus metrics API to v2
 - FluentBit: Adjust Buffer and Limit Configuration by removing Mem_Buf_Limit and storage.pause_on_chunks_overlimit parameters
 
 _Changes:_
 
+- [X] PDO-8754 OSD: Enable Save Query and CSV Export of Logs
 - [X] PDO-9375 FluentBit: Add Grafana Dashboard
 - [X] PDO-9376 FluentBit: Adjust Buffer and Limit Configuration
 
@@ -168,6 +170,7 @@ _Changes:_
 - [X] PDO-8072 ingress-nginx to use topologySpreadConstaints
 - [X] PDO-8128 Correct sample patch for Pingaccess-WAS engine HPA min/max replicas
 - [X] PDO-8164 OpenSearch: Implement Version 2.11.1
+- [X] PDO-8190 Update to include ingresses metrics
 
 ### 1.19.0.0
 
