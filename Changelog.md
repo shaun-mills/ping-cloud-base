@@ -9,9 +9,9 @@
 _Changes:_
 
 - [X] PDO-8754 OSD: Enable Save Query and CSV Export of Logs
+- [X] PDO-9021 Enable p1as-cluster-tools microservice in PCB
 - [X] PDO-9375 FluentBit: Add Grafana Dashboard
 - [X] PDO-9376 FluentBit: Adjust Buffer and Limit Configuration
-- [X] PDO-9021 Enable p1as-cluster-tools microservice in PCB
 
 ### 2.1.0
 
