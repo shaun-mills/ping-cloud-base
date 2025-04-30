@@ -21,6 +21,7 @@ helmCharts:
 ### This field is used to trigger a resync of the p1as-cluster-tools helm chart ###
 configMapGenerator:
   - name: cluster-tools-last-update-reason
+    namespace: ping-cloud
     literals:
       - UPDATE_REASON=""
   ### This is needed for the empty custom-patches.yaml file to work ###
