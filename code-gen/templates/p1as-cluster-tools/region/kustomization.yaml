@@ -25,10 +25,12 @@ configMapGenerator:
       - UPDATE_REASON=""
   ### This is needed for the empty custom-patches.yaml file to work ###
   - name: cluster-tools-custom-placeholder
+    namespace: ping-cloud
   ### This is needed for the empty custom-patches.yaml file to work in base folder ###
   - name: cluster-tools-custom-placeholder-base
+    namespace: ping-cloud
 
-patchesStrategicMerge:
+patches:
   ### PS/GSO customizations to OOTB resources should only go into this file. Otherwise, CSR auto-updates will break. ###
-  - custom-patches.yaml
-  - ../base/custom-patches.yaml
+  - path: custom-patches.yaml
+  - path: ../base/custom-patches.yaml
