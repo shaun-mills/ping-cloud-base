@@ -19,15 +19,15 @@ helmCharts:
 ### This field is used to trigger a resync of the p1as-cluster-tools helm chart ###
 configMapGenerator:
   - name: cluster-tools-last-update-reason
-    namespace: ping-cloud
+    namespace: ${PING_CLOUD_NAMESPACE}
     literals:
       - UPDATE_REASON=""
   ### This is needed for the empty custom-patches.yaml file to work ###
   - name: cluster-tools-custom-placeholder
-    namespace: ping-cloud
+    namespace: ${PING_CLOUD_NAMESPACE}
   ### This is needed for the empty custom-patches.yaml file to work in base folder ###
   - name: cluster-tools-custom-placeholder-base
-    namespace: ping-cloud
+    namespace: ${PING_CLOUD_NAMESPACE}
 
 patches:
   ### PS/GSO customizations to OOTB resources should only go into this file. Otherwise, CSR auto-updates will break. ###
