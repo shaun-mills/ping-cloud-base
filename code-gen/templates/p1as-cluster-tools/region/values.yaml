@@ -1,3 +1,5 @@
+# p1as-cluster-tools values
+
 # ingress-nginx-public values
 ingress-nginx-public:
   ingress-nginx:
@@ -8,6 +10,10 @@ ingress-nginx-public:
       service:
         annotations:
           ${NLB_NGX_PUBLIC_ANNOTATION_KEY_VALUE}
+      autoscaling:
+        minReplicas: 4
+        maxReplicas: 6
+        targetCPUUtilizationPercentage: 50
       extraContainers:
         - name: sigsci-agent
           env:
