@@ -8,6 +8,13 @@ ingress-nginx-public:
       service:
         annotations:
           ${NLB_NGX_PUBLIC_ANNOTATION_KEY_VALUE}
+      extraContainers:
+        - name: sigsci-agent
+          env:
+            - name: AWS_REGION
+              value: ${REGION}
+            - name: ENVIRONMENT_PREFIX
+              value: ${ENVIRONMENT_PREFIX}
 
 # ingress-nginx-private values
 ingress-nginx-private:
