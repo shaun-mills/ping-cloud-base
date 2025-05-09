@@ -81,13 +81,13 @@ testSigSciVersion() {
 }
 
 testNginxPrivateConfigMap() {
-  local configmap_private="ingress-nginx-private"
+  local configmap_private="ingress-nginx"
   check_configmap_key_exists "ingress-nginx-private" $configmap_private "location-snippet"
   check_configmap_key_exists "ingress-nginx-private" $configmap_private "log-format-upstream"
 }
 
 testNginxPublicConfigMap() {
-  local configmap_public="ingress-nginx-public"
+  local configmap_public="ingress-nginx"
   check_configmap_key_exists "ingress-nginx-public" $configmap_public "location-snippet"
   check_configmap_key_exists "ingress-nginx-public" $configmap_public "log-format-upstream"
   check_configmap_key_exists "ingress-nginx-public" $configmap_public "main-snippet"
