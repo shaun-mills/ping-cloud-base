@@ -8,3 +8,8 @@ ingress-nginx-public:
         minReplicas: 4
         maxReplicas: 6
         targetCPUUtilizationPercentage: 50
+      config:
+        # prod config settings
+        # migrated from PCB/k8s-configs/cluster-tools/prod/small/ingress/nginx
+        keep-alive-requests: "100000"
+        upstream-keepalive-timeout: "30"
