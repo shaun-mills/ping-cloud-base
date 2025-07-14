@@ -46,3 +46,8 @@ ingress-nginx-public:
 # ingress-nginx-private values
 ingress-nginx-private:
   ingress-nginx:
+    controller:
+      autoscaling:
+        minReplicas: 1
+        maxReplicas: 3
+        targetCPUUtilizationPercentage: 70
