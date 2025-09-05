@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: pingaccess-admin-ingress
+spec:
+  ingressClassName: nginx-public
+  rules:
+  - host: pingaccess-admin-dev.ping-demo.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: pingaccess-was
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - pingaccess-admin-dev.ping-demo.com

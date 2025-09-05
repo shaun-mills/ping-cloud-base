@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-ingress
+spec:
+  ingressClassName: nginx-public
+  rules:
+  - host: argocd-dev.ping-demo.com
+    http:
+      paths:
+      - backend:
+          service:
+            name: pingaccess-was
+            port:
+              number: 443
+        path: /
+        pathType: Prefix
+  tls:
+  - hosts:
+    - argocd-dev.ping-demo.com
