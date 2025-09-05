@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx-public
   rules:
-  - host: argocd-dev.ping-demo.com
+  - host: argocd.ping-demo.com
     http:
       paths:
       - backend:
@@ -17,4 +17,4 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - argocd-dev.ping-demo.com
+    - argocd.ping-demo.com

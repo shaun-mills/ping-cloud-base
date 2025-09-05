@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx-public
   rules:
-  - host: prometheus-dev.ping-demo.com
+  - host: prometheus.ping-demo.com
     http:
       paths:
       - backend:
@@ -17,4 +17,4 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - prometheus-dev.ping-demo.com
+    - prometheus.ping-demo.com

@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx-public
   rules:
-  - host: pingcentral-admin-dev.ping-demo.com
+  - host: pingcentral-admin.ping-demo.com
     http:
       paths:
       # This rule allows external access to PingCentral via the pingaccess-was runtime service
@@ -18,4 +18,4 @@ spec:
               number: 443
   tls:
   - hosts:
-      - pingcentral-admin-dev.ping-demo.com
+      - pingcentral-admin.ping-demo.com

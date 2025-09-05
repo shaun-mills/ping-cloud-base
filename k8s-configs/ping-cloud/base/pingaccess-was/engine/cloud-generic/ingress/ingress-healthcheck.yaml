@@ -5,7 +5,7 @@ metadata:
 spec:
   ingressClassName: nginx-public
   rules:
-  - host: healthcheck-httpbin-pa-was-dev.ping-demo.com
+  - host: healthcheck-httpbin-pa-was.ping-demo.com
     http:
       paths:
       - backend:
@@ -17,4 +17,4 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - healthcheck-httpbin-pa-was-dev.ping-demo.com
+    - healthcheck-httpbin-pa-was.ping-demo.com
