@@ -20,6 +20,7 @@
 - Prevent customer changes to environment during upgrades via maintenance page
 - Refactor os-bootstrap code, remove wait-for-os-health initContainer
 - Adding JSON parsing support for PingFederate logs
+- IP Allowlist for Ingress objects
 
 
 _Changes:_
@@ -45,6 +46,7 @@ _Changes:_
 - [X] PDO-9798 ingress-nginx-private autoscaling min/max replicas
 - [X] PDO-9972 [Logstash] OS bootstrap code refactor
 - [X] PDO-10087 Prevent customer changes to environment during upgrades via maintenance page
+- [X] PDO-9865 Implement PA-WAS separation of ingresses in PCB
 
 
 ### 2.1.1
