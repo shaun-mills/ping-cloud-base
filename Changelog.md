@@ -20,7 +20,6 @@
 - Prevent customer changes to environment during upgrades via maintenance page
 - Refactor os-bootstrap code, remove wait-for-os-health initContainer
 - Adding JSON parsing support for PingFederate logs
-- IP Allowlist for Ingress objects
 
 
 _Changes:_
