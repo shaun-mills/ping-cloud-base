@@ -2,6 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: pingaccess-admin-ingress-via-was
+  annotations:
+    selfservice.metadata.pingidentity.com/name: "PingAccess Admin Console"
+    selfservice.metadata.pingidentity.com/description: "Native administration console for PingAccess"
+    selfservice.metadata.pingidentity.com/category: "Product Administration"
+    selfservice.metadata.pingidentity.com/displayURL: "https://pingaccess-admin.{tenant_domain}/"
+  labels:
+    selfservice: urls
 spec:
   ingressClassName: nginx-public
   rules:

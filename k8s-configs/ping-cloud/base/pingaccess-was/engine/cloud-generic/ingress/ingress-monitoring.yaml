@@ -2,6 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: monitoring-ingress
+  annotations:
+    selfservice.metadata.pingidentity.com/name: "Grafana Console"
+    selfservice.metadata.pingidentity.com/description: "Native Grafana console for querying and visualizing metrics"
+    selfservice.metadata.pingidentity.com/category: "Platform Administration"
+    selfservice.metadata.pingidentity.com/displayURL: "https://monitoring.{tenant_domain}/"
+  labels:
+    selfservice: urls
 spec:
   ingressClassName: nginx-public
   rules:

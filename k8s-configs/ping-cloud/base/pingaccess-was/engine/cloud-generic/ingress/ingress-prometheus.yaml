@@ -2,6 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: prometheus-ingress
+  annotations:
+    selfservice.metadata.pingidentity.com/name: "Prometheus Console"
+    selfservice.metadata.pingidentity.com/description: "Native Prometheus expression browser for querying raw metrics"
+    selfservice.metadata.pingidentity.com/category: "Platform Administration"
+    selfservice.metadata.pingidentity.com/displayURL: "https://prometheus.{tenant_domain}/"
+  labels:
+    selfservice: urls
 spec:
   ingressClassName: nginx-public
   rules:

@@ -2,6 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: argocd-ingress
+  annotations:
+    selfservice.metadata.pingidentity.com/name: "Argo CD Console"
+    selfservice.metadata.pingidentity.com/description: "Native administration Console for Argo CD"
+    selfservice.metadata.pingidentity.com/category: "Platform Administration"
+    selfservice.metadata.pingidentity.com/displayURL: "https://argocd.{tenant_domain}/"
+  labels:
+    selfservice: urls
 spec:
   ingressClassName: nginx-public
   rules:
