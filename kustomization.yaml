@@ -224,7 +224,7 @@ patchesJson6902:
       path: /spec/rules/0/host
       value: pingaccess-agent.${TENANT_DOMAIN}
 
-## Separated Ingresses through PA-WAS engines
+### Separated Ingresses through PA-WAS engines ###
 
 # Argo CD
 - target:

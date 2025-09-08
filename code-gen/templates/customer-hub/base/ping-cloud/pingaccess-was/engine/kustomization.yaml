@@ -94,7 +94,7 @@ patchesJson6902:
       path: /spec/rules/5/host
       value: argocd.${DNS_ZONE}
 
-## Separated Ingresses through PA-WAS engines
+### Separated Ingresses through PA-WAS engines ###
 
 # Argo CD
 - target:

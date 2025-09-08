@@ -94,7 +94,7 @@ patchesJson6902:
     - op: remove
       path: /spec/rules/6
 
-## Separated Ingresses through PA-WAS engines
+### Separated Ingresses through PA-WAS engines ###
 
 # Argo CD
 - target:
