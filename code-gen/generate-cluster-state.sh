@@ -1439,8 +1439,8 @@ for ENV_OR_BRANCH in ${SUPPORTED_ENVIRONMENT_TYPES}; do
     #   argo_host_index=6
     # fi
     export argocd_ingress_patch="
-# Argo CD pingaccess was runtime
 - target:
+    # Argo CD ingress via pingaccess-was for Beluga Environments
     group: networking.k8s.io
     version: v1
     kind: Ingress
