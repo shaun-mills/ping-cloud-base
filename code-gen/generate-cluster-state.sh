@@ -1433,20 +1433,20 @@ for ENV_OR_BRANCH in ${SUPPORTED_ENVIRONMENT_TYPES}; do
 
     # Keep ArgoCD in pingaccess-was-ingress by replacing the delete patches
     # shellcheck disable=SC2016
-    if test "${ENV}" = "${CUSTOMER_HUB}"; then
-      argo_host_index=5
-    else
-      argo_host_index=6
-    fi
-    export argocd_ingress_patch="
-# Argo CD pingaccess was runtime
-- op: replace
-  path: /spec/tls/0/hosts/${argo_host_index}
-  value: argocd.${DNS_ZONE}
-- op: replace
-  path: /spec/rules/${argo_host_index}/host
-  value: argocd.${DNS_ZONE}
-"
+#     if test "${ENV}" = "${CUSTOMER_HUB}"; then
+#       argo_host_index=5
+#     else
+#       argo_host_index=6
+#     fi
+#     export argocd_ingress_patch="
+# # Argo CD pingaccess was runtime
+# - op: replace
+#   path: /spec/tls/0/hosts/${argo_host_index}
+#   value: argocd.${DNS_ZONE}
+# - op: replace
+#   path: /spec/rules/${argo_host_index}/host
+#   value: argocd.${DNS_ZONE}
+# "
     K8S_CONFIGS_PA_WAS_ENGINE_KUSTOMIZE_FILE="${K8S_CONFIGS_DIR}/base/ping-cloud/pingaccess-was/engine/kustomization.yaml"
     yq eval -i '.patchesJson6902[1].patch |= (from_yaml | .[:-2] | to_yaml)' "${K8S_CONFIGS_PA_WAS_ENGINE_KUSTOMIZE_FILE}"
     yq eval -i '.patchesJson6902[1].patch += strenv(argocd_ingress_patch)' "${K8S_CONFIGS_PA_WAS_ENGINE_KUSTOMIZE_FILE}"
@@ -1466,7 +1466,7 @@ for ENV_OR_BRANCH in ${SUPPORTED_ENVIRONMENT_TYPES}; do
     rm -f "${PRIMARY_PING_KUST_FILE}.bak"
     if test "${ENV}" != "${CUSTOMER_HUB}"; then
       # Remove patch that deletes volumeMount from Prometheus, in primary region and non-chub envs only
-      yq 'del(.patchesJson6902)' "${PRIMARY_PING_KUST_FILE}" -i 
+      yq 'del(.patchesJson6902)' "${PRIMARY_PING_KUST_FILE}" -i
     fi
   else
     # Child regions
