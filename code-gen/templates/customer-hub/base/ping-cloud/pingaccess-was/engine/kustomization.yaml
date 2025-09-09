@@ -36,13 +36,13 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /metadata/annotations/selfservice.metadata.pingidentity.com~1displayURL
-      value: "https://argocd.${TENANT_DOMAIN}/"
+      value: "https://argocd.${DNS_ZONE}/"
     - op: replace
       path: /spec/tls/0/hosts/0
-      value: argocd.${TENANT_DOMAIN}
+      value: argocd.${DNS_ZONE}
     - op: replace
       path: /spec/rules/0/host
-      value: argocd.${TENANT_DOMAIN}
+      value: argocd.${DNS_ZONE}
 
 # PingCentral Admin
 - target:
@@ -53,10 +53,10 @@ patchesJson6902:
   patch: |-
     - op: replace
       path: /metadata/annotations/selfservice.metadata.pingidentity.com~1displayURL
-      value: "https://pingcentral-admin.${TENANT_DOMAIN}/"
+      value: "https://pingcentral-admin.${DNS_ZONE}/"
     - op: replace
       path: /spec/tls/0/hosts/0
-      value: pingcentral-admin.${TENANT_DOMAIN}
+      value: pingcentral-admin.${DNS_ZONE}
     - op: replace
       path: /spec/rules/0/host
-      value: pingcentral-admin.${TENANT_DOMAIN}
+      value: pingcentral-admin.${DNS_ZONE}
