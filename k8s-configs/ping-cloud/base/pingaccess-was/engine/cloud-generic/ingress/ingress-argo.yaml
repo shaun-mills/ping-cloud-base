@@ -6,7 +6,7 @@ metadata:
     selfservice.metadata.pingidentity.com/name: "Argo CD Console"
     selfservice.metadata.pingidentity.com/description: "Native administration Console for Argo CD"
     selfservice.metadata.pingidentity.com/category: "Platform Administration"
-    selfservice.metadata.pingidentity.com/displayURL: "https://argocd.{tenant_domain}/"
+    selfservice.metadata.pingidentity.com/displayURL: "https://argocd.ping-demo.com/"
   labels:
     selfservice: urls
 spec:

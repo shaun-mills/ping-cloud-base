@@ -6,7 +6,7 @@ metadata:
     selfservice.metadata.pingidentity.com/name: "Grafana Console"
     selfservice.metadata.pingidentity.com/description: "Native Grafana console for querying and visualizing metrics"
     selfservice.metadata.pingidentity.com/category: "Platform Administration"
-    selfservice.metadata.pingidentity.com/displayURL: "https://monitoring.{tenant_domain}/"
+    selfservice.metadata.pingidentity.com/displayURL: "https://monitoring.ping-demo.com/"
   labels:
     selfservice: urls
 spec:

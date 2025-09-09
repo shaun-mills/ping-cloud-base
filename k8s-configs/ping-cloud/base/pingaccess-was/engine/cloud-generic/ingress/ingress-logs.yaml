@@ -6,7 +6,7 @@ metadata:
     selfservice.metadata.pingidentity.com/name: "OpenSearch Dashboards"
     selfservice.metadata.pingidentity.com/description: "Native OpenSearch console for visualizing and analyzing logs"
     selfservice.metadata.pingidentity.com/category: "Platform Administration"
-    selfservice.metadata.pingidentity.com/displayURL: "https://logs.{tenant_domain}/"
+    selfservice.metadata.pingidentity.com/displayURL: "https://logs.ping-demo.com/"
   labels:
     selfservice: urls
 spec:
