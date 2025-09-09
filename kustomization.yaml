@@ -226,145 +226,145 @@ patchesJson6902:
 
 ### Separated Ingresses through PA-WAS engines ###
 
-# Argo CD
-- target:
-    group: networking.k8s.io
-    version: v1
-    kind: Ingress
-    name: argocd-ingress
-  patch: |-
-    - op: replace
-      path: /spec/tls/0/hosts/0
-      value: argocd.${TENANT_DOMAIN}
-    - op: replace
-      path: /spec/rules/0/host
-      value: argocd.${TENANT_DOMAIN}
+# # Argo CD
+# - target:
+#     group: networking.k8s.io
+#     version: v1
+#     kind: Ingress
+#     name: argocd-ingress
+#   patch: |-
+#     - op: replace
+#       path: /spec/tls/0/hosts/0
+#       value: argocd.${TENANT_DOMAIN}
+#     - op: replace
+#       path: /spec/rules/0/host
+#       value: argocd.${TENANT_DOMAIN}
 
-# Healthcheck
-- target:
-    group: networking.k8s.io
-    version: v1
-    kind: Ingress
-    name: healthcheck-httpbin-ingress
-  patch: |-
-    - op: replace
-      path: /spec/tls/0/hosts/0
-      value: healthcheck-httpbin-pa-was.${TENANT_DOMAIN}
-    - op: replace
-      path: /spec/rules/0/host
-      value: healthcheck-httpbin-pa-was.${TENANT_DOMAIN}
+# # Healthcheck
+# - target:
+#     group: networking.k8s.io
+#     version: v1
+#     kind: Ingress
+#     name: healthcheck-httpbin-ingress
+#   patch: |-
+#     - op: replace
+#       path: /spec/tls/0/hosts/0
+#       value: healthcheck-httpbin-pa-was.${TENANT_DOMAIN}
+#     - op: replace
+#       path: /spec/rules/0/host
+#       value: healthcheck-httpbin-pa-was.${TENANT_DOMAIN}
 
-# Logs
-- target:
-    group: networking.k8s.io
-    version: v1
-    kind: Ingress
-    name: logs-ingress
-  patch: |-
-    - op: replace
-      path: /spec/tls/0/hosts/0
-      value: logs.${TENANT_DOMAIN}
-    - op: replace
-      path: /spec/rules/0/host
-      value: logs.${TENANT_DOMAIN}
+# # Logs
+# - target:
+#     group: networking.k8s.io
+#     version: v1
+#     kind: Ingress
+#     name: logs-ingress
+#   patch: |-
+#     - op: replace
+#       path: /spec/tls/0/hosts/0
+#       value: logs.${TENANT_DOMAIN}
+#     - op: replace
+#       path: /spec/rules/0/host
+#       value: logs.${TENANT_DOMAIN}
 
-# Monitoring
-- target:
-    group: networking.k8s.io
-    version: v1
-    kind: Ingress
-    name: monitoring-ingress
-  patch: |-
-    - op: replace
-      path: /spec/tls/0/hosts/0
-      value: monitoring.${TENANT_DOMAIN}
-    - op: replace
-      path: /spec/rules/0/host
-      value: monitoring.${TENANT_DOMAIN}
+# # Monitoring
+# - target:
+#     group: networking.k8s.io
+#     version: v1
+#     kind: Ingress
+#     name: monitoring-ingress
+#   patch: |-
+#     - op: replace
+#       path: /spec/tls/0/hosts/0
+#       value: monitoring.${TENANT_DOMAIN}
+#     - op: replace
+#       path: /spec/rules/0/host
+#       value: monitoring.${TENANT_DOMAIN}
 
-# PingAccess Admin
-- target:
-    group: networking.k8s.io
-    version: v1
-    kind: Ingress
-    name: pingaccess-admin-ingress-via-was
-  patch: |-
-    - op: replace
-      path: /spec/tls/0/hosts/0
-      value: pingaccess-admin.${TENANT_DOMAIN}
-    - op: replace
-      path: /spec/rules/0/host
-      value: pingaccess-admin.${TENANT_DOMAIN}
+# # PingAccess Admin
+# - target:
+#     group: networking.k8s.io
+#     version: v1
+#     kind: Ingress
+#     name: pingaccess-admin-ingress-via-was
+#   patch: |-
+#     - op: replace
+#       path: /spec/tls/0/hosts/0
+#       value: pingaccess-admin.${TENANT_DOMAIN}
+#     - op: replace
+#       path: /spec/rules/0/host
+#       value: pingaccess-admin.${TENANT_DOMAIN}
 
-# PingCentral Admin
-- target:
-    group: networking.k8s.io
-    version: v1
-    kind: Ingress
-    name: pingcentral-admin-ingress
-  patch: |-
-    - op: replace
-      path: /spec/tls/0/hosts/0
-      value: pingcentral-admin.${TENANT_DOMAIN}
-    - op: replace
-      path: /spec/rules/0/host
-      value: pingcentral-admin.${TENANT_DOMAIN}
+# # PingCentral Admin
+# - target:
+#     group: networking.k8s.io
+#     version: v1
+#     kind: Ingress
+#     name: pingcentral-admin-ingress
+#   patch: |-
+#     - op: replace
+#       path: /spec/tls/0/hosts/0
+#       value: pingcentral-admin.${TENANT_DOMAIN}
+#     - op: replace
+#       path: /spec/rules/0/host
+#       value: pingcentral-admin.${TENANT_DOMAIN}
 
-# PingFederate Admin
-- target:
-    group: networking.k8s.io
-    version: v1
-    kind: Ingress
-    name: pingfederate-admin-ingress
-  patch: |-
-    - op: replace
-      path: /spec/tls/0/hosts/0
-      value: pingfederate-admin.${TENANT_DOMAIN}
-    - op: replace
-      path: /spec/rules/0/host
-      value: pingfederate-admin.${TENANT_DOMAIN}
+# # PingFederate Admin
+# - target:
+#     group: networking.k8s.io
+#     version: v1
+#     kind: Ingress
+#     name: pingfederate-admin-ingress
+#   patch: |-
+#     - op: replace
+#       path: /spec/tls/0/hosts/0
+#       value: pingfederate-admin.${TENANT_DOMAIN}
+#     - op: replace
+#       path: /spec/rules/0/host
+#       value: pingfederate-admin.${TENANT_DOMAIN}
 
-# Prometheus
-- target:
-    group: networking.k8s.io
-    version: v1
-    kind: Ingress
-    name: prometheus-ingress
-  patch: |-
-    - op: replace
-      path: /spec/tls/0/hosts/0
-      value: prometheus.${TENANT_DOMAIN}
-    - op: replace
-      path: /spec/rules/0/host
-      value: prometheus.${TENANT_DOMAIN}
+# # Prometheus
+# - target:
+#     group: networking.k8s.io
+#     version: v1
+#     kind: Ingress
+#     name: prometheus-ingress
+#   patch: |-
+#     - op: replace
+#       path: /spec/tls/0/hosts/0
+#       value: prometheus.${TENANT_DOMAIN}
+#     - op: replace
+#       path: /spec/rules/0/host
+#       value: prometheus.${TENANT_DOMAIN}
 
-# PingAccess WAS Admin
-- target:
-    group: networking.k8s.io
-    version: v1
-    kind: Ingress
-    name: pingaccess-was-admin-ingress
-  patch: |-
-    - op: replace
-      path: /spec/tls/0/hosts/0
-      value: pingaccess-was-admin.${TENANT_DOMAIN}
-    - op: replace
-      path: /spec/rules/0/host
-      value: pingaccess-was-admin.${TENANT_DOMAIN}
+# # PingAccess WAS Admin
+# - target:
+#     group: networking.k8s.io
+#     version: v1
+#     kind: Ingress
+#     name: pingaccess-was-admin-ingress
+#   patch: |-
+#     - op: replace
+#       path: /spec/tls/0/hosts/0
+#       value: pingaccess-was-admin.${TENANT_DOMAIN}
+#     - op: replace
+#       path: /spec/rules/0/host
+#       value: pingaccess-was-admin.${TENANT_DOMAIN}
 
-# PingCentral
-- target:
-    group: networking.k8s.io
-    version: v1
-    kind: Ingress
-    name: pingcentral-ingress
-  patch: |-
-    - op: replace
-      path: /spec/tls/0/hosts/0
-      value: pingcentral.${TENANT_DOMAIN}
-    - op: replace
-      path: /spec/rules/0/host
-      value: pingcentral.${TENANT_DOMAIN}
+# # PingCentral
+# - target:
+#     group: networking.k8s.io
+#     version: v1
+#     kind: Ingress
+#     name: pingcentral-ingress
+#   patch: |-
+#     - op: replace
+#       path: /spec/tls/0/hosts/0
+#       value: pingcentral.${TENANT_DOMAIN}
+#     - op: replace
+#       path: /spec/rules/0/host
+#       value: pingcentral.${TENANT_DOMAIN}
 
 # Make the admin nodes available externally for test purposes. In general, they
 # will be behind a VPN gateway on all CDEs so only admins have access to them.
