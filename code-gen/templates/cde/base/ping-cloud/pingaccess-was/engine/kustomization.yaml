@@ -49,7 +49,7 @@ patchesJson6902:
     name: logs-ingress
   patch: |-
     - op: replace
-      path: /metadata/annotations/selfservice.metadata.pingidentity.com/displayURL
+      path: /metadata/annotations/selfservice.metadata.pingidentity.com~1displayURL
       value: "https://logs.${TENANT_DOMAIN}/"
     - op: replace
       path: /spec/tls/0/hosts/0
@@ -66,7 +66,7 @@ patchesJson6902:
     name: monitoring-ingress
   patch: |-
     - op: replace
-      path: /metadata/annotations/selfservice.metadata.pingidentity.com/displayURL
+      path: /metadata/annotations/selfservice.metadata.pingidentity.com~1displayURL
       value: "https://monitoring.${TENANT_DOMAIN}/"
     - op: replace
       path: /spec/tls/0/hosts/0
@@ -83,7 +83,7 @@ patchesJson6902:
     name: pingaccess-admin-ingress-via-was
   patch: |-
     - op: replace
-      path: /metadata/annotations/selfservice.metadata.pingidentity.com/displayURL
+      path: /metadata/annotations/selfservice.metadata.pingidentity.com~1displayURL
       value: "https://pingaccess-admin.${TENANT_DOMAIN}/"
     - op: replace
       path: /spec/tls/0/hosts/0
@@ -100,7 +100,7 @@ patchesJson6902:
     name: pingcentral-admin-ingress
   patch: |-
     - op: replace
-      path: /metadata/annotations/selfservice.metadata.pingidentity.com/displayURL
+      path: /metadata/annotations/selfservice.metadata.pingidentity.com~1displayURL
       value: "https://pingcentral-admin.${TENANT_DOMAIN}/"
     - op: replace
       path: /spec/tls/0/hosts/0
@@ -117,7 +117,7 @@ patchesJson6902:
     name: pingfederate-admin-ingress
   patch: |-
     - op: replace
-      path: /metadata/annotations/selfservice.metadata.pingidentity.com/displayURL
+      path: /metadata/annotations/selfservice.metadata.pingidentity.com~1displayURL
       value: "https://pingfederate-admin.${TENANT_DOMAIN}/"
     - op: replace
       path: /spec/tls/0/hosts/0
@@ -134,7 +134,7 @@ patchesJson6902:
     name: prometheus-ingress
   patch: |-
     - op: replace
-      path: /metadata/annotations/selfservice.metadata.pingidentity.com/displayURL
+      path: /metadata/annotations/selfservice.metadata.pingidentity.com~1displayURL
       value: "https://prometheus.${TENANT_DOMAIN}/"
     - op: replace
       path: /spec/tls/0/hosts/0

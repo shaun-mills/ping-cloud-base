@@ -35,7 +35,7 @@ patchesJson6902:
     name: argocd-ingress
   patch: |-
     - op: replace
-      path: /metadata/annotations/selfservice.metadata.pingidentity.com/displayURL
+      path: /metadata/annotations/selfservice.metadata.pingidentity.com~1displayURL
       value: "https://argocd.${TENANT_DOMAIN}/"
     - op: replace
       path: /spec/tls/0/hosts/0
