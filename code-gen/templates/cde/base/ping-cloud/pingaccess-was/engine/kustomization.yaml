@@ -29,20 +29,6 @@ patchesJson6902:
 
 ### Separated Ingresses through PA-WAS engines ###
 
-# Argo CD
-- target:
-    group: networking.k8s.io
-    version: v1
-    kind: Ingress
-    name: argocd-ingress
-  patch: |-
-    - op: replace
-      path: /spec/tls/0/hosts/0
-      value: argocd.${TENANT_DOMAIN}
-    - op: replace
-      path: /spec/rules/0/host
-      value: argocd.${TENANT_DOMAIN}
-
 # Healthcheck
 - target:
     group: networking.k8s.io
