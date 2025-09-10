@@ -10,6 +10,21 @@ images:
   newName: ${ECR_REGISTRY_NAME}/pingcloud-apps/pingaccess-was${ECR_ENV}
   newTag: ${PINGACCESS_WAS_IMAGE_TAG}
 
+patches:
+# Remove PingFederate Admin ingress
+apiVersion: apps/v1
+kind: Ingress
+metadata:
+ name: pingfederate-admin-ingress
+$patch: delete
+
+# Remove PingAccess Admin ingress
+apiVersion: apps/v1
+kind: Ingress
+metadata:
+ name: pingaccess-admin-ingress
+$patch: delete
+
 patchesJson6902:
 
 ### PingAccess WAS Engine Last Update Config Map ###
