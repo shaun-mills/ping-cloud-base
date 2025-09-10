@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Ingress
 metadata:
- name: pingfederate-admin-ingress-via-was
+ name: pingfederate-admin-ingress
 $patch: delete
 ---
 # Remove PingAccess Admin ingress
