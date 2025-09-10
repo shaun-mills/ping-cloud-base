@@ -4,7 +4,6 @@ metadata:
   name: pingfederate-admin-ingress-via-was
   annotations:
     selfservice.metadata.pingidentity.com/name: "PingFederate Admin Console"
-    selfservice.metadata.pingidentity.com/description: "Native administration console for PingFederate"
     selfservice.metadata.pingidentity.com/category: "Product Administration"
     selfservice.metadata.pingidentity.com/displayURL: "https://pingfederate-admin.ping-demo.com/pingfederate/app"
   labels:

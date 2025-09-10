@@ -4,7 +4,7 @@ metadata:
   name: argocd-ingress
   annotations:
     selfservice.metadata.pingidentity.com/name: "Argo CD Console"
-    selfservice.metadata.pingidentity.com/description: "Native administration Console for Argo CD"
+    selfservice.metadata.pingidentity.com/description: "Native Argo CD console for cluster orchestration administration"
     selfservice.metadata.pingidentity.com/category: "Platform Administration"
     selfservice.metadata.pingidentity.com/displayURL: "https://argocd.ping-demo.com/"
   labels:

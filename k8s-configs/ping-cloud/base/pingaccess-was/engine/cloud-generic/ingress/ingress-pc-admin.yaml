@@ -4,7 +4,6 @@ metadata:
   name: pingcentral-admin-ingress
   annotations:
     selfservice.metadata.pingidentity.com/name: "PingCentral Admin Console"
-    selfservice.metadata.pingidentity.com/description: "Native administration console for PingCentral"
     selfservice.metadata.pingidentity.com/category: "Product Administration"
     selfservice.metadata.pingidentity.com/displayURL: "https://pingcentral-admin.ping-demo.com/"
   labels:
