@@ -1,0 +1,14 @@
+# Remove Argocd-ingress
+apiVersion: apps/v1
+kind: Ingress
+metadata:
+ name: argocd-ingress
+$patch: delete
+---
+# Remove PingCentral Admin ingress
+apiVersion: apps/v1
+kind: Ingress
+metadata:
+ name: pingcentral-admin-ingress
+$patch: delete
+---
