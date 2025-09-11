@@ -11,13 +11,13 @@ images:
   newTag: ${PINGACCESS_WAS_IMAGE_TAG}
 
 patches:
-  - path: remove-unneeded-ingresses.yaml
+  - path: remove-argocd-ingress.yaml
     target:
       group: networking.k8s.io
       version: v1
       kind: Ingress
       name: argocd-ingress
-  - path: remove-unneeded-ingresses.yaml
+  - path: remove-pingcentral-admin-ingress.yaml
     target:
       group: networking.k8s.io
       version: v1
@@ -94,7 +94,7 @@ patchesJson6902:
     group: networking.k8s.io
     version: v1
     kind: Ingress
-    name: pingaccess-admin-ingress-via-was
+    name: pingaccess-admin-ingress
   patch: |-
     - op: replace
       path: /metadata/annotations/selfservice.metadata.pingidentity.com~1displayURL

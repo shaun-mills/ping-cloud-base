@@ -1,0 +1,6 @@
+# Remove PingFederate Admin ingress
+apiVersion: networking.k8s.io
+kind: Ingress
+metadata:
+ name: pingfederate-admin-ingress-via-was
+$patch: delete
