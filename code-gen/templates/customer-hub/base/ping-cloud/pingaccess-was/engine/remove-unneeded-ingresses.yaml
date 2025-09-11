@@ -12,13 +12,6 @@ metadata:
  name: pingaccess-admin-ingress
 $patch: delete
 ---
-# Remove Healthcheck ingress
-apiVersion: networking.k8s.io
-kind: Ingress
-metadata:
- name: healthcheck-httpbin-pa-was-ingress
-$patch: delete
----
 # Remove Logs ingress
 apiVersion: networking.k8s.io
 kind: Ingress
