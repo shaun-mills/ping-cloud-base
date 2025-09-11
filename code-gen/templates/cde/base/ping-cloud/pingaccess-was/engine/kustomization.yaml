@@ -10,19 +10,20 @@ images:
   newName: ${ECR_REGISTRY_NAME}/pingcloud-apps/pingaccess-was${ECR_ENV}
   newTag: ${PINGACCESS_WAS_IMAGE_TAG}
 
-patches:
-  - path: remove-argocd-ingress.yaml
-    target:
-      group: networking.k8s.io
-      version: v1
-      kind: Ingress
-      name: argocd-ingress
-  - path: remove-pingcentral-admin-ingress.yaml
-    target:
-      group: networking.k8s.io
-      version: v1
-      kind: Ingress
-      name: pingcentral-admin-ingress
+patchesStrategicMerge:
+  - remove-unneeded-ingresses.yaml
+  # - path: remove-argocd-ingress.yaml
+  #   target:
+  #     group: networking.k8s.io
+  #     version: v1
+  #     kind: Ingress
+  #     name: argocd-ingress
+  # - path: remove-pingcentral-admin-ingress.yaml
+  #   target:
+  #     group: networking.k8s.io
+  #     version: v1
+  #     kind: Ingress
+  #     name: pingcentral-admin-ingress
 
 patchesJson6902:
 
