@@ -22,7 +22,7 @@ helmCharts:
     version: v2.2-pdo9865-sm
     valuesInline:
       ecrRegistryName: "705370621539.dkr.ecr.us-west-2.amazonaws.com/dev"
-      profileBranch: v2.2-pdo9865-sm
+      # profileBranch: v2.2-pdo9865-sm
     repo: oci://705370621539.dkr.ecr.us-west-2.amazonaws.com/dev
 
 
