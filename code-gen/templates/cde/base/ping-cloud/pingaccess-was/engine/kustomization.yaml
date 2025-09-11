@@ -12,18 +12,6 @@ images:
 
 patchesStrategicMerge:
   - remove-unneeded-ingresses.yaml
-  # - path: remove-argocd-ingress.yaml
-  #   target:
-  #     group: networking.k8s.io
-  #     version: v1
-  #     kind: Ingress
-  #     name: argocd-ingress
-  # - path: remove-pingcentral-admin-ingress.yaml
-  #   target:
-  #     group: networking.k8s.io
-  #     version: v1
-  #     kind: Ingress
-  #     name: pingcentral-admin-ingress
 
 patchesJson6902:
 

@@ -1,6 +1,0 @@
-# Remove PingCentral Admin ingress
-apiVersion: apps/v1
-kind: Ingress
-metadata:
- name: pingcentral-admin-ingress
-$patch: delete
