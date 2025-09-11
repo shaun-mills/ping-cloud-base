@@ -34,7 +34,7 @@ patches:
       group: networking.k8s.io
       version: v1
       kind: Ingress
-      name: pingfederate-admin-ingress
+      name: pingfederate-admin-ingress-via-was
   - path: remove-unneeded-ingresses.yaml
     target:
       group: networking.k8s.io
