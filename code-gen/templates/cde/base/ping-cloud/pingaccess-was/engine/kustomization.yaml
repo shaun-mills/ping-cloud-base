@@ -35,7 +35,7 @@ patchesJson6902:
     group: networking.k8s.io
     version: v1
     kind: Ingress
-    name: healthcheck-httpbin-ingress
+    name: healthcheck-httpbin-pa-was-ingress
   patch: |-
     - op: replace
       path: /spec/tls/0/hosts/0

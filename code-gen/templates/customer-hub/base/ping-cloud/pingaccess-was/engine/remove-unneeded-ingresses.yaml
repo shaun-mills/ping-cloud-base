@@ -16,7 +16,7 @@ $patch: delete
 apiVersion: networking.k8s.io
 kind: Ingress
 metadata:
- name: healthcheck-httpbin-ingress
+ name: healthcheck-httpbin-pa-was-ingress
 $patch: delete
 ---
 # Remove Logs ingress
