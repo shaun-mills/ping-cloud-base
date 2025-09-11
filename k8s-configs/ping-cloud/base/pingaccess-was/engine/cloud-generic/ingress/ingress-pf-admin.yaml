@@ -1,7 +1,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: pingfederate-admin-ingress-via-was
+  name: pingfederate-admin-console-ingress
   annotations:
     selfservice.metadata.pingidentity.com/name: "PingFederate Admin Console"
     selfservice.metadata.pingidentity.com/category: "Product Administration"
