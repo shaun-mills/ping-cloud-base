@@ -10,43 +10,45 @@ images:
   newName: ${ECR_REGISTRY_NAME}/pingcloud-apps/pingaccess-was${ECR_ENV}
   newTag: ${PINGACCESS_WAS_IMAGE_TAG}
 
-patches:
-  - path: remove-unneeded-ingresses.yaml
-    target:
-      group: networking.k8s.io
-      version: v1
-      kind: Ingress
-      name: logs-ingress
-  - path: remove-unneeded-ingresses.yaml
-    target:
-      group: networking.k8s.io
-      version: v1
-      kind: Ingress
-      name: monitoring-ingress
-  - path: remove-unneeded-ingresses.yaml
-    target:
-      group: networking.k8s.io
-      version: v1
-      kind: Ingress
-      name: pingaccess-admin-ingress
-  - path: remove-unneeded-ingresses.yaml
-    target:
-      group: networking.k8s.io
-      version: v1
-      kind: Ingress
-      name: pingfederate-admin-ingress-via-was
-  - path: remove-unneeded-ingresses.yaml
-    target:
-      group: networking.k8s.io
-      version: v1
-      kind: Ingress
-      name: healthcheck-httpbin-ingress
-  - path: remove-unneeded-ingresses.yaml
-    target:
-      group: networking.k8s.io
-      version: v1
-      kind: Ingress
-      name: prometheus-ingress
+patchesStrategicMerge:
+  - remove-unneeded-ingresses.yaml
+# patches:
+#   - path: remove-unneeded-ingresses.yaml
+#     target:
+#       group: networking.k8s.io
+#       version: v1
+#       kind: Ingress
+#       name: logs-ingress
+#   - path: remove-unneeded-ingresses.yaml
+#     target:
+#       group: networking.k8s.io
+#       version: v1
+#       kind: Ingress
+#       name: monitoring-ingress
+#   - path: remove-unneeded-ingresses.yaml
+#     target:
+#       group: networking.k8s.io
+#       version: v1
+#       kind: Ingress
+#       name: pingaccess-admin-ingress
+#   - path: remove-unneeded-ingresses.yaml
+#     target:
+#       group: networking.k8s.io
+#       version: v1
+#       kind: Ingress
+#       name: pingfederate-admin-ingress-via-was
+#   - path: remove-unneeded-ingresses.yaml
+#     target:
+#       group: networking.k8s.io
+#       version: v1
+#       kind: Ingress
+#       name: healthcheck-httpbin-ingress
+#   - path: remove-unneeded-ingresses.yaml
+#     target:
+#       group: networking.k8s.io
+#       version: v1
+#       kind: Ingress
+#       name: prometheus-ingress
 
 patchesJson6902:
 

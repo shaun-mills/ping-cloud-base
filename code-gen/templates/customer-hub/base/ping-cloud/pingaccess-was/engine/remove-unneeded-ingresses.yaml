@@ -9,7 +9,7 @@ $patch: delete
 apiVersion: networking.k8s.io
 kind: Ingress
 metadata:
- name: pingaccess-admin-ingress-via-was
+ name: pingaccess-admin-ingress
 $patch: delete
 ---
 # Remove Healthcheck ingress
