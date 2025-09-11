@@ -2,5 +2,5 @@
 apiVersion: networking.k8s.io
 kind: Ingress
 metadata:
- name: pingfederate-admin-ingress-via-was
+ name: pingfederate-admin-ingress
 $patch: delete
