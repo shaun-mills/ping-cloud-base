@@ -202,7 +202,7 @@ patchesJson6902:
     group: networking.k8s.io
     version: v1
     kind: Ingress
-    name: pingaccess-admin-ingress-api
+    name: pingaccess-admin-ingress
   patch: |-
     - op: replace
       path: /spec/tls/0/hosts/0
