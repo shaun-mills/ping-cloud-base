@@ -83,7 +83,7 @@ patchesJson6902:
     group: networking.k8s.io
     version: v1
     kind: Ingress
-    name: pingaccess-admin-ingress
+    name: pingaccess-admin-console-ingress
   patch: |-
     - op: replace
       path: /metadata/annotations/selfservice.metadata.pingidentity.com~1displayURL
