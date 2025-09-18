@@ -11,7 +11,7 @@ metadata:
 spec:
   ingressClassName: nginx-public
   rules:
-  - host: pingaccess-admin.ping-demo2222.com
+  - host: pingaccess-admin.ping-demo.com
     http:
       paths:
       - backend:
