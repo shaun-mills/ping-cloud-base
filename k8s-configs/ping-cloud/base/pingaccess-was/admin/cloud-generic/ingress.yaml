@@ -14,9 +14,9 @@ spec:
   ingressClassName: nginx-private
   tls:
   - hosts:
-    - pingaccess-was-admin-dev.ping-demo2222.com
+    - pingaccess-was-admin-dev.ping-demo.com
   rules:
-  - host: pingaccess-was-admin-dev.ping-demo222.com
+  - host: pingaccess-was-admin-dev.ping-demo.com
     http:
       paths:
       # This rule gives access to the pingaccess-was admin services.
