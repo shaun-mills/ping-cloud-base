@@ -58,9 +58,9 @@ copy-images:
   stage: security
   image: ${K8S_DEPLOY_TOOLS}
   needs:
-    - compile
+    - deploy
   dependencies:
-    - compile
+    - deploy
   variables:
     BELUGA_VERSION: $CI_COMMIT_REF_NAME
     ARTIFACTORY_URL: "docker.corp.pingidentity.com:5900"
@@ -80,11 +80,11 @@ check-ext-images:
   stage: security
   image: ${K8S_DEPLOY_TOOLS}
   needs:
-    - compile
+    - deploy
   dependencies:
-    - compile
+    - deploy
   variables:
-    UBER_YAML: $CI_PROJECT_DIR/out/_builds_ping-cloud-private-tenant_ping-cloud-base.yaml
+    UBER_YAML: $CI_PROJECT_DIR/out/uber-debug.yaml
   script:
     - ${SHARED_CI_SCRIPTS_DIR}/k8s/security/check_ext_images.sh $UBER_YAML
   tags:
@@ -94,12 +94,12 @@ scan:
   stage: security
   image: ${K8S_DEPLOY_TOOLS}
   needs:
-    - compile
+    - deploy
   dependencies:
-    - compile
+    - deploy
   variables:
     GIT_STRATEGY: none
-    UBER_YAML: $CI_PROJECT_DIR/out/_builds_ping-cloud-private-tenant_ping-cloud-base.yaml
+    UBER_YAML: $CI_PROJECT_DIR/out/uber-debug.yaml
   allow_failure: true
   script:
     - kubescape scan --format json --format-version v2 --verbose --output report.json framework all $UBER_YAML
