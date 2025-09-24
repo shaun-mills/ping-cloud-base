@@ -135,16 +135,17 @@ deploy:
   tags:
     - default-gitlab-runner-ping-cloud
   image: ${K8S_DEPLOY_TOOLS}
+  variables:
+    YAML_OUT_DIR: $CI_PROJECT_DIR/out
   before_script:
     - mkdir -p $CI_PROJECT_DIR/tmp
   script:
-    - export DEBUG=true
     - ${SHARED_CI_SCRIPTS_DIR}/k8s/deploy/deploy.sh
     # Copy any files created in /tmp/ to CI_PROJECT_DIR/tmp/ so they are captured as artifacts
-    - cp -rv /tmp/* $CI_PROJECT_DIR/tmp/
+    # - cp -rv /tmp/* $CI_PROJECT_DIR/tmp/
   artifacts:
     paths:
-      - tmp/
+      - out/
   dependencies:
     - find-cluster
 
