@@ -24,8 +24,6 @@ export IMAGE_MAP="pingcloud-apps/pingaccess
    pingcloud-monitoring/prometheus-job-exporter
    pingcloud-monitoring/nri-kubernetes
    pingcloud-services/robot-framework
-   pingcloud-services/sigsci-nginx-ingress-controller
-   pingcloud-services/sigsci-agent
    pingcloud-services/grp-radiusproxy
    pingcloud-services/ingress-bootstrap"
 
