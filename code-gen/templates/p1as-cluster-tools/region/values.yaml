@@ -18,7 +18,7 @@ ingress-nginx-public:
       # Whole container needs to be defined here due to ingress-nginx helm templating
       # See: https://github.com/kubernetes/ingress-nginx/blob/main/charts/ingress-nginx/templates/controller-deployment.yaml#L180-L181
       - name: sigsci-agent
-        image: public.ecr.aws/r2h3l6e4/pingcloud-services/sigsci-agent/dev:v2.2-release-branch-latest
+        image: public.ecr.aws/r2h3l6e4/dev/sigsci-agent/dev:v2.2-release-branch-latest
         imagePullPolicy: Always
         resources:
           limits:
