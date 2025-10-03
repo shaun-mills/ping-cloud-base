@@ -65,7 +65,7 @@ testHeartBeatPA() {
 
     response=$(heartBeatTestCases "${heartbeat_endpoint}" "pa")
     log "PingAccess heartbeat response: ${response}"
-    assertEquals "PingAccess heartbeat response code was not empty object" "{}{}{}{}{}" "${response}"
+    assertEquals "PingAccess heartbeat response code was not empty object" "{}{}{}{}" "${response}"
 }
 
 # PingFederate heartbeat test cases
@@ -76,7 +76,7 @@ testHeartBeatPF() {
 
     response=$(heartBeatTestCases "${heartbeat_endpoint}" "pf")
     log "PingFederate heartbeat response: ${response}"
-    assertEquals "PingFederate heartbeat response code was not empty object" "{}{}{}{}{}" "${response}"
+    assertEquals "PingFederate heartbeat response code was not empty object" "{}{}{}{}" "${response}"
 }
 
 # When arguments are passed to a script you must
