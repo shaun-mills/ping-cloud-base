@@ -24,7 +24,7 @@ fi
 
 # }
 
-heartbeattest_cases() {
+heartBeatTestCases() {
     # Test cases for heartbeat endpoint
     local heartbeat_endpoint=$1
     local product=$2
@@ -47,18 +47,24 @@ heartbeattest_cases() {
 
 # PingAccess heartbeat test cases
 testHeartBeatPA() {
-    local heartbeat_endpoint="$(kubectl get ingress pingaccess-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.status.loadBalancer.ingress[*].hostname}')"
+    local heartbeat_endpoint="$(kubectl get ingress pingaccess-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.spec.tls[*].hosts[0]}')"
+    log "Testing PingAccess heartbeat endpoint"
     log "PingAccess heartbeat endpoint: ${heartbeat_endpoint}"
 
-    heartbeattest_cases "${heartbeat_endpoint}" "pa"
+    response=$(heartBeatTestCases "${heartbeat_endpoint}" "pa")
+    log "PingAccess heartbeat response: ${response}"
+    assertEquals "PingAccess heartbeat response code was not empty object" "{}{}{}{}{}" "${response}"
 }
 
 # PingFederate heartbeat test cases
 testHeartBeatPF() {
-    local heartbeat_endpoint="$(kubectl get ingress pingfederate-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.status.loadBalancer.ingress[*].hostname}')"
+    local heartbeat_endpoint="$(kubectl get ingress pingfederate-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.spec.tls[*].hosts[0]}')"
+    log "Testing PingFederate heartbeat endpoint"
     log "PingFederate heartbeat endpoint: ${heartbeat_endpoint}"
 
-    heartbeattest_cases "${heartbeat_endpoint}" "pf"
+    response=$(heartBeatTestCases "${heartbeat_endpoint}" "pf")
+    log "PingFederate heartbeat response: ${response}"
+    assertEquals "PingFederate heartbeat response code was not empty object" "{}{}{}{}{}" "${response}"
 }
 
 # When arguments are passed to a script you must
