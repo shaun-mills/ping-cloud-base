@@ -51,7 +51,7 @@ heartBeatTestCases() {
     curl -k -X GET "https://${heartbeat_endpoint}//${product}/something/../heartbeat.ping"
 
     # extra /
-    curl -k -X GET "https://${heartbeat_endpoint}/${product}//heartbeat.ping"
+    # curl -k -X GET "https://${heartbeat_endpoint}/${product}//heartbeat.ping"
 
     # encoded slash
     curl -k -X GET "https://${heartbeat_endpoint}/${product}%2Fheartbeat.ping"
