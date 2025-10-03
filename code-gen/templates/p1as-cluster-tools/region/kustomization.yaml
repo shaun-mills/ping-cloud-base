@@ -41,3 +41,15 @@ patches:
   ### PS/GSO customizations to OOTB resources should only go into this file. Otherwise, CSR auto-updates will break. ###
   - path: custom-patches.yaml
   - path: ../base/custom-patches.yaml
+  - target:
+      kind: Deployment
+      name: ingress-nginx
+      namespace: ingress-nginx-public
+    patch: | 
+      # turning off key renewal
+      - op: add
+        path: /spec/template/spec/containers/sigsci-agent/env/-
+        value:
+        - name: AWS_REGION
+          value: ${REGION}
+      
