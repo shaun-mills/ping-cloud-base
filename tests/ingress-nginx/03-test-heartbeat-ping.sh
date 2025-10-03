@@ -10,22 +10,34 @@ if skipTest "${0}"; then
   exit 0
 fi
 
-# oneTimeSetUp() {
-#   # Wait for DNS resolution to be available
-#   mock_metadata_ingress_lb="$(kubectl get ingress mock-metadata-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.status.loadBalancer.ingress[*].hostname}')"
-#   dns_check=$(curl -k -v https://${mock_metadata_ingress_lb})
-#   exit_code=$?
-#   while [ ${exit_code} == 6 ]; do
-#     log "Trying DNS resolution for mock-metadata-ingress..."
-#     dns_check=$(curl -k -v https://${mock_metadata_ingress_lb})
-#     exit_code=$?
-#     sleep 10
-#   done
+oneTimeSetUp() {
+  # Wait for DNS resolution to be available
+  local pingfederate_ingress="$(kubectl get ingress pingfederate-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.spec.tls[*].hosts[0]}')"
+  log "pingfederate-ingress: ${pingfederate_ingress}"
+  dns_check=$(curl -k -v https://${pingfederate_ingress})
+  exit_code=$?
+  while [ ${exit_code} == 6 ]; do
+    log "Trying DNS resolution for pingfederate-ingress..."
+    dns_check=$(curl -k -v https://${pingfederate_ingress})
+    exit_code=$?
+    sleep 10
+  done
 
-# }
+  local pingaccess_ingress="$(kubectl get ingress pingaccess-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.spec.tls[*].hosts[0]}')"
+  log "pingaccess-ingress: ${pingaccess_ingress}"
+  dns_check=$(curl -k -v https://${pingaccess_ingress})
+  exit_code=$?
+  while [ ${exit_code} == 6 ]; do
+    log "Trying DNS resolution for pingaccess-ingress..."
+    dns_check=$(curl -k -v https://${pingaccess_ingress})
+    exit_code=$?
+    sleep 10
+  done
+}
 
 heartBeatTestCases() {
     # Test cases for heartbeat endpoint
+    # All responses should be an empty object {}
     local heartbeat_endpoint=$1
     local product=$2
 
