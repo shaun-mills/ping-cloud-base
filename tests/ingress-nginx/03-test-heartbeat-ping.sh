@@ -42,19 +42,19 @@ heartBeatTestCases() {
     local product=$2
 
     # Regular request
-    curl -k -X GET "https://${heartbeat_endpoint}/${product}/heartbeat.ping"
+    curl -k -v -X GET "https://${heartbeat_endpoint}/${product}/heartbeat.ping"
 
     # Encoded '.'
-    curl -k -X GET "https://${heartbeat_endpoint}/${product}/heartbeat%2Eping"
+    curl -k -v -X GET "https://${heartbeat_endpoint}/${product}/heartbeat%2Eping"
 
-    # path traversal
-    curl -k -X GET "https://${heartbeat_endpoint}//${product}/something/../heartbeat.ping"
+    # Path traversal
+    curl -k -v -X GET "https://${heartbeat_endpoint}/${product}/something/../heartbeat.ping"
 
-    # extra /
-    # curl -k -X GET "https://${heartbeat_endpoint}/${product}//heartbeat.ping"
+    # Encoded slash
+    curl -k -v -X GET "https://${heartbeat_endpoint}/${product}%2Fheartbeat.ping"
 
-    # encoded slash
-    curl -k -X GET "https://${heartbeat_endpoint}/${product}%2Fheartbeat.ping"
+    # Path Parameter Obfuscation (Matrix URIs)
+    curl -k -v -X GET "https://${heartbeat_endpoint}/${product}/heartbeat.ping;junkparam=blah"
 }
 
 # PingAccess heartbeat test cases
@@ -65,7 +65,7 @@ testHeartBeatPA() {
 
     response=$(heartBeatTestCases "${heartbeat_endpoint}" "pa")
     log "PingAccess heartbeat response: ${response}"
-    assertEquals "PingAccess heartbeat response code was not empty object" "{}{}{}{}" "${response}"
+    assertEquals "PingAccess heartbeat response code was not empty object" "{}{}{}{}{}" "${response}"
 }
 
 # PingFederate heartbeat test cases
@@ -76,7 +76,7 @@ testHeartBeatPF() {
 
     response=$(heartBeatTestCases "${heartbeat_endpoint}" "pf")
     log "PingFederate heartbeat response: ${response}"
-    assertEquals "PingFederate heartbeat response code was not empty object" "{}{}{}{}" "${response}"
+    assertEquals "PingFederate heartbeat response code was not empty object" "{}{}{}{}{}" "${response}"
 }
 
 # When arguments are passed to a script you must
