@@ -12,71 +12,91 @@ fi
 
 oneTimeSetUp() {
   # Wait for DNS resolution to be available
-  local pingfederate_ingress="$(kubectl get ingress pingfederate-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.spec.tls[*].hosts[0]}')"
+  pingfederate_ingress="$(kubectl get ingress pingfederate-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.spec.tls[*].hosts[0]}')"
   log "pingfederate-ingress: ${pingfederate_ingress}"
-  dns_check=$(curl -k -v https://${pingfederate_ingress})
+  dns_check=$(curl -k https://${pingfederate_ingress})
   exit_code=$?
   while [ ${exit_code} == 6 ]; do
     log "Trying DNS resolution for pingfederate-ingress..."
-    dns_check=$(curl -k -v https://${pingfederate_ingress})
+    dns_check=$(curl -k https://${pingfederate_ingress})
     exit_code=$?
     sleep 10
   done
 
-  local pingaccess_ingress="$(kubectl get ingress pingaccess-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.spec.tls[*].hosts[0]}')"
+  pingaccess_ingress="$(kubectl get ingress pingaccess-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.spec.tls[*].hosts[0]}')"
   log "pingaccess-ingress: ${pingaccess_ingress}"
-  dns_check=$(curl -k -v https://${pingaccess_ingress})
+  dns_check=$(curl -k https://${pingaccess_ingress})
   exit_code=$?
   while [ ${exit_code} == 6 ]; do
     log "Trying DNS resolution for pingaccess-ingress..."
-    dns_check=$(curl -k -v https://${pingaccess_ingress})
+    dns_check=$(curl -k https://${pingaccess_ingress})
     exit_code=$?
     sleep 10
   done
 }
 
-heartBeatTestCases() {
-    # Test cases for heartbeat endpoint
-    # All responses should be an empty object {}
-    local heartbeat_endpoint=$1
-    local product=$2
+# PingAccess heartbeat test cases
 
-    # Regular request
-    curl -k -v -X GET "https://${heartbeat_endpoint}/${product}/heartbeat.ping"
-
-    # Encoded '.'
-    curl -k -v -X GET "https://${heartbeat_endpoint}/${product}/heartbeat%2Eping"
-
-    # Path traversal
-    curl -k -v -X GET "https://${heartbeat_endpoint}/${product}/something/../heartbeat.ping"
-
-    # Encoded slash
-    curl -k -v -X GET "https://${heartbeat_endpoint}/${product}%2Fheartbeat.ping"
-
-    # Path Parameter Obfuscation (Matrix URIs)
-    curl -k -v -X GET "https://${heartbeat_endpoint}/${product}/heartbeat.ping;junkparam=blah"
+testHeartBeatPARegular() {
+  # Regular request
+  response=$(curl -k "https://${pingaccess_ingress}/pa/heartbeat.ping")
+  assertEquals "PingAccess heartbeat response code was not empty object" "{}" "${response}"
 }
 
-# PingAccess heartbeat test cases
-testHeartBeatPA() {
-    local heartbeat_endpoint="$(kubectl get ingress pingaccess-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.spec.tls[*].hosts[0]}')"
-    log "Testing PingAccess heartbeat endpoint"
-    log "PingAccess heartbeat endpoint: ${heartbeat_endpoint}"
+testHeartBeatPAEncodedPeriod() {
+  # Encoded '.'
+  response=$(curl -k "https://${pingaccess_ingress}/pa/heartbeat%2Eping")
+  assertEquals "PingAccess heartbeat response code was not empty object" "{}" "${response}"
+}
 
-    response=$(heartBeatTestCases "${heartbeat_endpoint}" "pa")
-    log "PingAccess heartbeat response: ${response}"
-    assertEquals "PingAccess heartbeat response code was not empty object" "{}{}{}{}{}" "${response}"
+testHeartBeatPAPathTraversal() {
+  # Path traversal
+  response=$(curl -k "https://${pingaccess_ingress}/pa/something/../heartbeat.ping")
+  assertEquals "PingAccess heartbeat response code was not empty object" "{}" "${response}"
+}
+
+testHeartBeatPAEncodedSlash() {
+  # Encoded '/'
+  response=$(curl -k "https://${pingaccess_ingress}/pa%2Fheartbeat.ping")
+  assertEquals "PingAccess heartbeat response code was not empty object" "{}" "${response}"
+}
+
+testHeartBeatPAPathParameterObfuscation() {
+  # Path Parameter Obfuscation (Matrix URIs)
+  response=$(curl -k "https://${pingaccess_ingress}/pa/heartbeat.ping;junkparam=blah")
+  assertEquals "PingAccess heartbeat response code was not empty object" "{}" "${response}"
 }
 
 # PingFederate heartbeat test cases
-testHeartBeatPF() {
-    local heartbeat_endpoint="$(kubectl get ingress pingfederate-ingress -n ${PING_CLOUD_NAMESPACE} -o jsonpath='{.spec.tls[*].hosts[0]}')"
-    log "Testing PingFederate heartbeat endpoint"
-    log "PingFederate heartbeat endpoint: ${heartbeat_endpoint}"
 
-    response=$(heartBeatTestCases "${heartbeat_endpoint}" "pf")
-    log "PingFederate heartbeat response: ${response}"
-    assertEquals "PingFederate heartbeat response code was not empty object" "{}{}{}{}{}" "${response}"
+testHeartBeatPFRegular() {
+  # Regular request
+  response=$(curl -k "https://${pingfederate_ingress}/pf/heartbeat.ping")
+  assertEquals "PingFederate heartbeat response code was not empty object" "{}" "${response}"
+}
+
+testHeartBeatPFEncodedPeriod() {
+  # Encoded '.'
+  response=$(curl -k "https://${pingfederate_ingress}/pf/heartbeat%2Eping")
+  assertEquals "PingFederate heartbeat response code was not empty object" "{}" "${response}"
+}
+
+testHeartBeatPFPathTraversal() {
+  # Path traversal
+  response=$(curl -k "https://${pingfederate_ingress}/pf/something/../heartbeat.ping")
+  assertEquals "PingFederate heartbeat response code was not empty object" "{}" "${response}"
+}
+
+testHeartBeatPFEncodedSlash() {
+  # Encoded '/'
+  response=$(curl -k "https://${pingfederate_ingress}/pf%2Fheartbeat.ping")
+  assertEquals "PingFederate heartbeat response code was not empty object" "{}" "${response}"
+}
+
+testHeartBeatPFPathParameterObfuscation() {
+  # Path Parameter Obfuscation (Matrix URIs)
+  response=$(curl -k "https://${pingfederate_ingress}/pf/heartbeat.ping;junkparam=blah")
+  assertEquals "PingFederate heartbeat response code was not empty object" "{}" "${response}"
 }
 
 # When arguments are passed to a script you must
