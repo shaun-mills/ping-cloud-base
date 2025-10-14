@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Ensure pingaccess and pingfederate heartbeat public endpoints return null object
+# Ensure heartbeat public endpoints return null object
 
 CI_SCRIPTS_DIR="${SHARED_CI_SCRIPTS_DIR:-/ci-scripts}"
 . "${CI_SCRIPTS_DIR}/common.sh" "${1}"
