@@ -29,6 +29,9 @@
 - Allow AWS R53 health checks to bypass IP allowlisting
 - Add backwards compatible JSON filters for customer pipelines (PF/PA)
 - Upgrade os-controller-manager(os-operator) to 2.7.0
+- Add PF and PC creds to PingAccess Admin for PingCentral OAuth2 connection
+- Disable Basic Auth for PA Admin API after enabling OAuth
+
 
 _Changes:_
 
@@ -44,7 +47,9 @@ _Changes:_
 - [X] PDO-9376 FluentBit: Adjust Buffer and Limit Configuration
 - [X] PDO-9414 Set initialDelaySeconds and failureThreshold on readiness probe for PingAccess and
 - [X] PDO-9455 Logstash: Revise Bootstrap Process to Directly Check Status of OpenSearch
+- [X] PDO-9465 Disable Basic Auth for PA Admin API after enabling OAuth
 - [X] PDO-9533 Remove PA_LOG_LEVEL from log4j file
+- [X] PDO-9538 Configure PingCentral's PA Admin API connection to use OAuth2
 - [X] PDO-9576 Add pod-reaper enabled label to PingCentral
 - [X] PDO-9692 [FluentBit] Upgrade to version 3.2.10
 - [X] PDO-9950 [Opensearch] Upgrade to version 2.19.0
@@ -58,12 +63,14 @@ _Changes:_
 - [X] PDO-9972 [Logstash] OS bootstrap code refactor
 - [X] PDO-9865 Implement PA-WAS separation of ingresses in PCB
 - [X] PDO-10066 Add self-service annotations and labels to ingresses
+- [X] PDO-10068 Configure PA engines in child regions to use OAuth2
 - [X] PDO-10087 Prevent customer changes to environment during upgrades via maintenance page
 - [X] PDO-10166 FluentBit - Use aws-for-fluent-bit image and consolidate all the pipelines
 - [X] PDO-10234 Log4j2.xml - adjust customer pipelines to ensure consistent JSON Log events
 - [X] PDO-10349 Allow AWS R53 health checks to bypass IP allowlisting
 - [X] PDO-10401 Update microservice code to handle umbrella charts for profile repo code
 - [X] PDO-10178 [OpenSearch] Upgrade OpenSearch operator (os-controller-manager) to v2.7.0
+- [X] PDO-10545 FluentBit: The main pipeline-output is not being removed from the customer-hub cde
 
 ### 2.1.1
 
@@ -168,6 +175,7 @@ _Changes:_
 - Add p1as-self-service microservice
 - Remove Thanos resources and use Prometheus standalone
 - Update global values.yaml for newRelicLicenseKey variable substitution
+- Upgrade Cluster Autoscaler to v1.30.2
 
 _Changes:_
 
@@ -183,6 +191,7 @@ _Changes:_
 - [X] PDO-7248 NewRelic: Upgrade APM agent to latest version
 - [X] PDO-7428 Update seal-secret-values.py to seal with namespace only. Update secret structure
 - [X] PDO-7445 Remove toplogy-descriptor volume mount from products where not needed
+- [X] PDO-7455 Upgrade Cluster Autoscaler to v1.30.2
 - [X] PDO-7469 De-duplicate prod-values.yaml
 - [X] PDO-7482 Reorganize fluentbit configuration
 - [X] PDO-7527 Grafana: Update PGO dashboards to be compatible with the current PGO version
