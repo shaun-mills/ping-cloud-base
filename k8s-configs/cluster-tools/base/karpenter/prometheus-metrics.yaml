@@ -3,8 +3,8 @@
   metadata:
     name: karpenter
     namespace: kube-system
-  spec:
-    template:
+  spec:     
+    template: 
       metadata:
         annotations:
           prometheus.io/path: '/metrics'
