@@ -734,6 +734,8 @@ organize_code_for_csr() {
             yq -i ". *= load(\"${chub_values_file}\")" "${chub_values_file//chub-/}"
             rm -f $chub_values_file
           done
+          # remove prod-values.yaml files
+          find "${app_target_dir}" -type f -name "prod-values.yaml" -exec rm -f {} +
           ;;
       esac
     fi
