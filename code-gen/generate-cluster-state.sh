@@ -719,12 +719,20 @@ organize_code_for_csr() {
           # delete all prod-values.yaml files
           find "${app_target_dir}" -type f -name "prod-values.yaml" -exec rm -f {} +
           ;;
-        stage | prod | customer-hub)
+        stage | prod)
           # merge prod-values.yaml to values.yaml (overwriting values.yaml if it exists)
           prod_values_files=$(find "${app_target_dir}" -type f -name "prod-values.yaml")
           for prod_values_file in ${prod_values_files}; do
             yq -i ". *= load(\"${prod_values_file}\")" "${prod_values_file//prod-/}"
             rm -f $prod_values_file
+          done
+          ;;
+        customer-hub)
+          # Merge customer-hub-values.yaml to values.yaml (overwriting values.yaml if it exists)
+          chub_values_files=$(find "${app_target_dir}" -type f -name "chub-values.yaml")
+          for chub_values_file in ${chub_values_files}; do
+            yq -i ". *= load(\"${chub_values_file}\")" "${chub_values_file//chub-/}"
+            rm -f $chub_values_file
           done
           ;;
       esac
