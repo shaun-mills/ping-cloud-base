@@ -716,8 +716,9 @@ organize_code_for_csr() {
       # Handle prod vs. non-prod values files
       case "${ENV}" in
         dev | test)
-          # delete all prod-values.yaml files
+          # delete chub and prod values files
           find "${app_target_dir}" -type f -name "prod-values.yaml" -exec rm -f {} +
+          find "${app_target_dir}" -type f -name "chub-values.yaml" -exec rm -f {} +
           ;;
         stage | prod)
           # merge prod-values.yaml to values.yaml (overwriting values.yaml if it exists)
@@ -726,15 +727,17 @@ organize_code_for_csr() {
             yq -i ". *= load(\"${prod_values_file}\")" "${prod_values_file//prod-/}"
             rm -f $prod_values_file
           done
+          # delete all chub-values.yaml files
+          find "${app_target_dir}" -type f -name "chub-values.yaml" -exec rm -f {} +
           ;;
         customer-hub)
-          # Merge customer-hub-values.yaml to values.yaml (overwriting values.yaml if it exists)
+          # Merge chub-values.yaml to values.yaml (overwriting values.yaml if it exists)
           chub_values_files=$(find "${app_target_dir}" -type f -name "chub-values.yaml")
           for chub_values_file in ${chub_values_files}; do
             yq -i ". *= load(\"${chub_values_file}\")" "${chub_values_file//chub-/}"
             rm -f $chub_values_file
           done
-          # remove prod-values.yaml files
+          # delete all prod-values.yaml files
           find "${app_target_dir}" -type f -name "prod-values.yaml" -exec rm -f {} +
           ;;
       esac
