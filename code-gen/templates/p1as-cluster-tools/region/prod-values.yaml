@@ -5,7 +5,7 @@ ingress-nginx-public:
   ingress-nginx:
     controller:
       autoscaling:
-        minReplicas: {{ if eq "customer-hub" .Values.global.env }} 2 {{ else }} 4 {{ end }}
+        minReplicas: 4
         maxReplicas: 6
         targetCPUUtilizationPercentage: 40
       config:
