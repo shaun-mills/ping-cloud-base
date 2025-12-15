@@ -743,12 +743,14 @@ organize_code_for_csr() {
             done
             # delete all prod-values.yaml files
             find "${app_target_dir}" -type f -name "prod-values.yaml" -exec rm -f {} +
-          else
-            echo "No chub-values.yaml files found for app ${app_name}, using prod-values.yaml if present"
+          elif [ -n "${prod_values_files}" ]; then
+            echo "No chub-values.yaml files found for app ${app_name}, using prod-values.yaml"
             for prod_values_file in ${prod_values_files}; do
               yq -i ". *= load(\"${prod_values_file}\")" "${prod_values_file//prod-/}"
               rm -f $prod_values_file
             done
+          else
+            echo "No chub-values.yaml or prod-values.yaml files found for app ${app_name}, using base values.yaml"
           fi
           ;;
       esac
