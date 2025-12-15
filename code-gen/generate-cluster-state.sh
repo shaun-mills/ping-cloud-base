@@ -732,13 +732,22 @@ organize_code_for_csr() {
           ;;
         customer-hub)
           # Merge chub-values.yaml to values.yaml (overwriting values.yaml if it exists)
-          chub_values_files=$(find "${app_target_dir}" -type f -name "chub-values.yaml")
-          for chub_values_file in ${chub_values_files}; do
-            yq -i ". *= load(\"${chub_values_file}\")" "${chub_values_file//chub-/}"
-            rm -f $chub_values_file
-          done
-          # delete all prod-values.yaml files
-          find "${app_target_dir}" -type f -name "prod-values.yaml" -exec rm -f {} +
+          if chub_values_files=$(find "${app_target_dir}" -type f -name "chub-values.yaml"); then
+            echo "Merging chub-values.yaml files for app ${app_name}"
+            for chub_values_file in ${chub_values_files}; do
+              yq -i ". *= load(\"${chub_values_file}\")" "${chub_values_file//chub-/}"
+              rm -f $chub_values_file
+            done
+            # delete all prod-values.yaml files
+            find "${app_target_dir}" -type f -name "prod-values.yaml" -exec rm -f {} +
+          else
+            echo "No chub-values.yaml files found for app ${app_name}, using prod-values.yaml if present"
+            prod_values_files=$(find "${app_target_dir}" -type f -name "prod-values.yaml")
+            for prod_values_file in ${prod_values_files}; do
+              yq -i ". *= load(\"${prod_values_file}\")" "${prod_values_file//prod-/}"
+              rm -f $prod_values_file
+            done
+          fi
           ;;
       esac
     fi
