@@ -736,7 +736,6 @@ organize_code_for_csr() {
 
           # Merge chub-values.yaml to values.yaml (overwriting values.yaml if it exists)
           if [ -n "${chub_values_files}" ]; then
-            echo "Merging chub-values.yaml files for app ${app_name}"
             for chub_values_file in ${chub_values_files}; do
               yq -i ". *= load(\"${chub_values_file}\")" "${chub_values_file//chub-/}"
               rm -f $chub_values_file
@@ -745,15 +744,10 @@ organize_code_for_csr() {
             find "${app_target_dir}" -type f -name "prod-values.yaml" -exec rm -f {} +
           # If no chub-values.yaml files exist, use prod-values.yaml files
           elif [ -n "${prod_values_files}" ]; then
-            echo "No chub-values.yaml files found for app ${app_name}, using prod-values.yaml"
             for prod_values_file in ${prod_values_files}; do
               yq -i ". *= load(\"${prod_values_file}\")" "${prod_values_file//prod-/}"
               rm -f $prod_values_file
             done
-          # If neither chub-values.yaml nor prod-values.yaml files exist, use base values.yaml
-          else
-            echo "No chub-values.yaml or prod-values.yaml files found for app ${app_name}, using base values.yaml"
-          fi
           ;;
       esac
     fi
