@@ -40,6 +40,8 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: argocd-p1as-bootstrap
+  annotations:
+    karpenter.sh/do-not-disrupt: "true"
   labels:
     role: argocd-p1as-bootstrap
 spec:

@@ -4,6 +4,8 @@ kind: Job
 metadata:
   name: customer-p1-connection
   namespace: argocd
+  annotations:
+    karpenter.sh/do-not-disrupt: "true"
   labels:
     role: customer-p1-connection
 spec:
