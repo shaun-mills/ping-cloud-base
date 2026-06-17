@@ -47,8 +47,6 @@ kind: CronJob
 metadata:
   name: delete-unused-pvs
   namespace: elastic-stack-logging
-  annotations:
-    karpenter.sh/do-not-disrupt: "true"
 spec:
   schedule: "0 0 * * 0" # Once a week
   successfulJobsHistoryLimit: 0
@@ -59,6 +57,9 @@ spec:
     spec:
       backoffLimit: 0
       template:
+        metadata:
+          annotations:
+            karpenter.sh/do-not-disrupt: "true"
         spec:
           serviceAccount: delete-unused-pvs
           restartPolicy: OnFailure

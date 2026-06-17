@@ -4,13 +4,13 @@ kind: Job
 metadata:
   name: customer-p1-connection
   namespace: argocd
-  annotations:
-    karpenter.sh/do-not-disrupt: "true"
   labels:
     role: customer-p1-connection
 spec:
   template:
     metadata:
+      annotations:
+        karpenter.sh/do-not-disrupt: "true"
       labels:
         # We create this job once, but we want the pod deleted long-term and not the job resource to prevent Argo drift
         pod-reaper: enabled
