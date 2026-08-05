@@ -1406,8 +1406,7 @@ for ENV_OR_BRANCH in ${SUPPORTED_ENVIRONMENT_TYPES}; do
   set_var "IRSA_INGRESS_ANNOTATION_KEY_VALUE" "" "${ACCOUNT_BASE_PATH}" "${ENV}/irsa-role/ingress-controller/arn" "${IRSA_TEMPLATE}"
 
   # shellcheck disable=SC2016
-  set_var "KARPENTER_ROLE_ANNOTATION_KEY_VALUE" "" "${IRSA_BASE_PATH}" \
-          "karpenter-controller/arn" "${IRSA_TEMPLATE}"
+  set_var "KARPENTER_ROLE_ANNOTATION_KEY_VALUE" "" "${IRSA_BASE_PATH}" "karpenter-controller/arn" "${IRSA_TEMPLATE}"
 
   set_var "CLUSTER_ENDPOINT" "" "${ACCOUNT_BASE_PATH}${ENV}" "/cluster_endpoint"
 
