@@ -10,6 +10,7 @@
 - Add resources for datalake telemetry pipeline
 - Add karpenter.sh/do-not-disrupt annotation to Jobs and CronJobs
 - Added Testcase to validate JSON nginx ingress logs
+- Get Karpenter IRSA role arn from SSM
 
 _Changes:_
 
@@ -21,6 +22,7 @@ _Changes:_
 - [X] PDO-11651 Add resources for datalake telemetry pipeline
 - [X] PDO-11804 - Add karpenter.sh/do-not-disrupt annotation to Jobs and CronJobs
 - [X] PDO-10226 Implement JSON logging for Ingress logs
+- [X] PDO-11215 Get KarpenterController IRSA role path from SSM
 
 ### 2.3.0
 
