@@ -163,9 +163,6 @@
 # KARPENTER_INSTANCE_PROFILE       | Karpenter Instance profile attached to EKS Clsuter | KarpenterInstanceProfile
 #                                  | IAM Node role                                      |
 #                                  |                                                    |
-# KARPENTER_CONTROLLER_IAM_ROLE    | IAM role that the Karpenter controller will use to | KarpenterControllerRole
-#                                  | provision new instances                            |
-#                                  |                                                    |
 # LOG_ARCHIVE_URL                  | The URL of the log archives. If provided, logs are | The string "unused".
 #                                  | periodically captured and sent to this URL. For    |
 #                                  | AWS S3 buckets, it must be an S3 URL, e.g.         |
@@ -896,7 +893,6 @@ echo "Initial NLB_NGX_PUBLIC_ANNOTATION_KEY_VALUE: ${NLB_NGX_PUBLIC_ANNOTATION_K
 
 echo "Initial CLUSTER_ENDPOINT: ${CLUSTER_ENDPOINT}"
 echo "Initial KARPENTER_INSTANCE_PROFILE: ${KARPENTER_INSTANCE_PROFILE}"
-echo "Initial KARPENTER_CONTROLLER_IAM_ROLE: ${KARPENTER_CONTROLLER_IAM_ROLE}"
 echo "Initial EBS_KMS_KEY_ARN : ${EBS_KMS_KEY_ARN}"
 echo "Initial DEFAULT_CLUSTER_UPTIME: ${DEFAULT_CLUSTER_UPTIME}"
 
@@ -1017,7 +1013,6 @@ export IRSA_INGRESS_ANNOTATION_KEY_VALUE=${IRSA_INGRESS_ANNOTATION_KEY_VALUE:-''
 
 export CLUSTER_ENDPOINT=${CLUSTER_ENDPOINT:-''}
 export KARPENTER_INSTANCE_PROFILE=${KARPENTER_INSTANCE_PROFILE:-"KarpenterInstanceProfile"}
-export KARPENTER_CONTROLLER_IAM_ROLE=${KARPENTER_CONTROLLER_IAM_ROLE:-"KarpenterControllerRole"}
 export EBS_KMS_KEY_ARN=${EBS_KMS_KEY_ARN:-''}
 export DEFAULT_CLUSTER_UPTIME=${DEFAULT_CLUSTER_UPTIME:-"Mon-Fri 09:00-18:00 UTC"}
 
@@ -1231,7 +1226,6 @@ echo "Using IRSA_INGRESS_ANNOTATION_KEY_VALUE: ${IRSA_INGRESS_ANNOTATION_KEY_VAL
 
 echo "Using CLUSTER_ENDPOINT: ${CLUSTER_ENDPOINT}"
 echo "Using KARPENTER_INSTANCE_PROFILE: ${KARPENTER_INSTANCE_PROFILE}"
-echo "Using KARPENTER_CONTROLLER_IAM_ROLE: ${KARPENTER_CONTROLLER_IAM_ROLE}"
 echo "Using EBS_KMS_KEY_ARN: ${EBS_KMS_KEY_ARN}"
 echo "Using DEFAULT_CLUSTER_UPTIME: ${DEFAULT_CLUSTER_UPTIME}"
 
