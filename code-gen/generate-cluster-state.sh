@@ -1400,7 +1400,6 @@ for ENV_OR_BRANCH in ${SUPPORTED_ENVIRONMENT_TYPES}; do
   # shellcheck disable=SC2016
   # Karpenter IRSA
   set_var "IRSA_KARPENTER_ANNOTATION_KEY_VALUE" "" "${IRSA_BASE_PATH}" "karpenter-controller/arn" "${IRSA_TEMPLATE}"
-  export IRSA_KARPENTER_ANNOTATION_KEY_VALUE=${IRSA_KARPENTER_ANNOTATION_KEY_VALUE:-''}
 
 
   set_var "CLUSTER_ENDPOINT" "" "${ACCOUNT_BASE_PATH}${ENV}" "/cluster_endpoint"
