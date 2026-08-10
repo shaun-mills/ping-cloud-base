@@ -11,6 +11,8 @@
 - Add karpenter.sh/do-not-disrupt annotation to Jobs and CronJobs
 - Added Testcase to validate JSON nginx ingress logs
 - Get Karpenter IRSA role arn from SSM
+- Add integration test for PingDirectory replication log ingestion into OpenSearch
+
 
 _Changes:_
 
@@ -18,11 +20,13 @@ _Changes:_
 - [X] PDO-8875 Add deploy wrapper to capture deploy failure logs
 - [X] PDO-9115 Introduce 'revisionHistoryLimit' to Delegated Admin deployment object to avoid cluttering
 - [X] PDO-10168 Update pod-reaper and httpbin images
-- [X] PDO-11285 Fix Fluentbit multiline cont rule sweeping JSON lines into buffer, causing silent audit log loss in OpenSearch
-- [X] PDO-11651 Add resources for datalake telemetry pipeline
-- [X] PDO-11804 - Add karpenter.sh/do-not-disrupt annotation to Jobs and CronJobs
 - [X] PDO-10226 Implement JSON logging for Ingress logs
 - [X] PDO-11215 Get KarpenterController IRSA role path from SSM
+- [X] PDO-11285 Fix Fluentbit multiline cont rule sweeping JSON lines into buffer, causing silent audit log loss in OpenSearch
+- [X] PDO-11651 Add resources for datalake telemetry pipeline
+- [X] PDO-11804 Add karpenter.sh/do-not-disrupt annotation to Jobs and CronJobs
+- [X] PDO-11929 Enable replication events in Console JSON Error Logger (PingDirectory)
+
 
 ### 2.3.0
 
