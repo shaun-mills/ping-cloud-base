@@ -13,7 +13,6 @@
 - Get Karpenter IRSA role arn from SSM
 - Add integration test for PingDirectory replication log ingestion into OpenSearch
 
-
 _Changes:_
 
 - [X] PDO-7316 JSON Logging: Implement JSON logging for PingDelegator logs
@@ -26,7 +25,6 @@ _Changes:_
 - [X] PDO-11651 Add resources for datalake telemetry pipeline
 - [X] PDO-11804 Add karpenter.sh/do-not-disrupt annotation to Jobs and CronJobs
 - [X] PDO-11929 Enable replication events in Console JSON Error Logger (PingDirectory)
-
 
 ### 2.3.0
 
