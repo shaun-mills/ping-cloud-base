@@ -14,9 +14,11 @@
 - Add integration test for PingDirectory replication log ingestion into OpenSearch
 - Add OpenSearch index template field coverage test and dashboard field validation test
 - JSON Logging: Implement JSON logging for PingCentral
+- Add p1as-observability Opensearch Helm chart to PCB
 
 _Changes:_
 
+- [X] PDO-5990 Opensearch: Add p1as-observability to PCB
 - [X] PDO-7316 JSON Logging: Implement JSON logging for PingDelegator logs
 - [X] PDO-7374 JSON Logging: Implement JSON logging for PingCentral
 - [X] PDO-8875 Add deploy wrapper to capture deploy failure logs
@@ -29,6 +31,7 @@ _Changes:_
 - [X] PDO-11651 Add resources for datalake telemetry pipeline
 - [X] PDO-11804 Add karpenter.sh/do-not-disrupt annotation to Jobs and CronJobs
 - [X] PDO-11929 Enable replication events in Console JSON Error Logger (PingDirectory)
+- [X] PDO-11621 Add HIPAA logging bucket bootstrap resource
 
 ### 2.3.0
 
