@@ -1,3 +1,5 @@
+## Note: this file is not referenced by the customer-hub nor cde kustomization.yaml files.
+## These are to be used as standalone resources when bootstrapping a new environment.
 kind: Kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 
