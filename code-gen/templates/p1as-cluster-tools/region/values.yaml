@@ -14,6 +14,7 @@ ingress-nginx-public:
     serviceAccount:
       annotations:
         ${IRSA_INGRESS_ANNOTATION_KEY_VALUE}
+        shauntest: "argocd-csr-test"
     controller:
       autoscaling:
         minReplicas: 3
@@ -48,7 +49,6 @@ karpenterController:
   serviceAccount:
     annotations:
       ${KARPENTER_ROLE_ANNOTATION_KEY_VALUE}
-      shauntest: "test annotations"
   # Ec2NodeClass definitions
   p1asEC2NodeClass:
     instanceProfile: "${KARPENTER_INSTANCE_PROFILE}"
