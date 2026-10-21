@@ -480,6 +480,8 @@ ${APP_RESYNC_SECONDS}
 ${CERT_RENEW_BEFORE}
 ${TELEPORT_RESOURCE_ID}
 ${SALESFORCE_ID}
+${KARPENTER_FARGATE_WORKER_NODE_SG}
+${KARPENTER_FARGATE_WHITELIST_SG}
 ${STAGE}'
 
 # Variables to replace within the generated cluster state code
@@ -1408,6 +1410,14 @@ for ENV_OR_BRANCH in ${SUPPORTED_ENVIRONMENT_TYPES}; do
   # Karpenter IRSA
   set_var "IRSA_KARPENTER_ANNOTATION_KEY_VALUE" "" "${IRSA_BASE_PATH}" "karpenter-controller/arn" "${IRSA_TEMPLATE}"
 
+  # PDO-12453: Karpenter Fargate pod ENI security groups for CDEs. The Fargate
+  # profile API cannot set pod SGs, so the p1as-karpenter chart renders a
+  # SecurityGroupPolicy from these two IDs (the set worker ENIs carry). Both
+  # paths are exported by cde-factory; absent on non-CDE clusters -> empty value
+  # -> chart renders nothing (set_var warns and continues on missing paths).
+  set_var "KARPENTER_FARGATE_WORKER_NODE_SG" "" "/pcpt/" "${ENV}/eks/worker-node-sg/id"
+  set_var "KARPENTER_FARGATE_WHITELIST_SG" "" "/pcpt/" "customer-network/ip-whitelist-sg/id"
+
 
   set_var "CLUSTER_ENDPOINT" "" "${ACCOUNT_BASE_PATH}${ENV}" "/cluster_endpoint"
 
@@ -1450,6 +1460,8 @@ for ENV_OR_BRANCH in ${SUPPORTED_ENVIRONMENT_TYPES}; do
   echo "Using IRSA_PING_ANNOTATION_KEY_VALUE: ${IRSA_PING_ANNOTATION_KEY_VALUE}"
   echo "Using IRSA_BOOTSTRAP_ANNOTATION_KEY_VALUE: ${IRSA_BOOTSTRAP_ANNOTATION_KEY_VALUE}"
   echo "Using IRSA_KARPENTER_ANNOTATION_KEY_VALUE: ${IRSA_KARPENTER_ANNOTATION_KEY_VALUE}"
+  echo "Using KARPENTER_FARGATE_WORKER_NODE_SG: ${KARPENTER_FARGATE_WORKER_NODE_SG}"
+  echo "Using KARPENTER_FARGATE_WHITELIST_SG: ${KARPENTER_FARGATE_WHITELIST_SG}"
   echo "Using IRSA_INGRESS_ANNOTATION_KEY_VALUE: ${IRSA_INGRESS_ANNOTATION_KEY_VALUE}"
   echo "Using NLB_NGX_PUBLIC_ANNOTATION_KEY_VALUE: ${NLB_NGX_PUBLIC_ANNOTATION_KEY_VALUE}"
   echo "Using CLUSTER_ENDPOINT: ${CLUSTER_ENDPOINT}"
