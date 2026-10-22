@@ -1415,7 +1415,10 @@ for ENV_OR_BRANCH in ${SUPPORTED_ENVIRONMENT_TYPES}; do
   # SecurityGroupPolicy from these two IDs (the set worker ENIs carry). Both
   # paths are exported by cde-factory; absent on non-CDE clusters -> empty value
   # -> chart renders nothing (set_var warns and continues on missing paths).
-  set_var "KARPENTER_FARGATE_WORKER_NODE_SG" "" "/pcpt/" "${ENV}/eks/worker-node-sg/id"
+  # The worker-node-sg path is prefixed with the cde-factory environment name
+  # (<TENANT_NAME>-<ENV>, e.g. snail-prod, tern-prod) — verified live against
+  # both CDEs' SSM on 2026-10-22. The whitelist SG is account-scoped.
+  set_var "KARPENTER_FARGATE_WORKER_NODE_SG" "" "/pcpt/" "${TENANT_NAME}-${ENV}/eks/worker-node-sg/id"
   set_var "KARPENTER_FARGATE_WHITELIST_SG" "" "/pcpt/" "customer-network/ip-whitelist-sg/id"
 
 
