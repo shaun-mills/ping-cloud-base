@@ -60,7 +60,7 @@ karpenterController:
   serviceAccount:
     annotations:
       ${IRSA_KARPENTER_ANNOTATION_KEY_VALUE}
-  # PDO-12453: SGs for the Karpenter Fargate pod ENI (SecurityGroupPolicy).
+  # SGs for the Karpenter Fargate pod ENI (SecurityGroupPolicy).
   # Populated from cde-factory-exported SSM paths; empty on non-CDE clusters,
   # in which case the p1as-karpenter chart renders no SecurityGroupPolicy.
   fargateSecurityGroupPolicy:
