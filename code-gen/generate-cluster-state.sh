@@ -1403,15 +1403,21 @@ for ENV_OR_BRANCH in ${SUPPORTED_ENVIRONMENT_TYPES}; do
   # Karpenter IRSA
   set_var "IRSA_KARPENTER_ANNOTATION_KEY_VALUE" "" "${IRSA_BASE_PATH}" "karpenter-controller/arn" "${IRSA_TEMPLATE}"
 
-  # PDO-12453: Karpenter Fargate pod ENI security groups for CDEs. The Fargate
-  # profile API cannot set pod SGs, so the p1as-karpenter chart renders a
-  # SecurityGroupPolicy from these two IDs (the set worker ENIs carry). Both
-  # paths are exported by cde-factory; absent on non-CDE clusters -> empty value
-  # -> chart renders nothing (set_var warns and continues on missing paths).
-  # The worker-node-sg path is prefixed with the cde-factory environment name
-  # (<TENANT_NAME>-<ENV>, e.g. snail-prod, tern-prod) — verified live against
-  # both CDEs' SSM on 2026-10-22. The whitelist SG is account-scoped.
-  set_var "KARPENTER_FARGATE_WORKER_NODE_SG" "" "/pcpt/" "${TENANT_NAME}-${ENV}/eks/worker-node-sg/id"
+  # PDO-12453: Karpenter Fargate pod ENI security groups. The Fargate profile
+  # API cannot set pod SGs, so the p1as-karpenter chart renders a
+  # SecurityGroupPolicy from these two IDs (the set worker ENIs carry). The
+  # worker-node-sg path prefix differs by environment type (verified live
+  # 2026-10-22/29): CDEs use the cde-factory environment name
+  # (<TENANT_NAME>-<ENV>, e.g. snail-prod, tern-prod); customer-hub uses the
+  # tenant-agnostic /pcpt/customer-hub/... tree written by the customer-hub
+  # factory. The whitelist SG is account-scoped (same producer both types).
+  # Absent paths warn-and-continue with an empty value -> chart renders no SGP.
+  # Prefix is re-derived each loop iteration; the surrounding subshell scopes it.
+  KARPENTER_WORKER_NODE_SG_PREFIX="/pcpt/${TENANT_NAME}-${ENV}/"
+  if [[ "${ENV}" == "customer-hub" ]]; then
+    KARPENTER_WORKER_NODE_SG_PREFIX="/pcpt/customer-hub/"
+  fi
+  set_var "KARPENTER_FARGATE_WORKER_NODE_SG" "" "${KARPENTER_WORKER_NODE_SG_PREFIX}" "eks/worker-node-sg/id"
   set_var "KARPENTER_FARGATE_WHITELIST_SG" "" "/pcpt/" "customer-network/ip-whitelist-sg/id"
 
 
